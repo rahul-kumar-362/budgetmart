@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetMart | Real-time Grocery Aggregator</title>
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <main class="container">
+        <header class="header">
+            <h1 class="logo">Budget<span>Mart</span></h1>
+            <p class="subtitle">Instantly compare grocery prices across top platforms.</p>
+        </header>
+
+        <section class="search-section">
+            <form id="searchForm" class="search-box glass-panel">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput"
+                    placeholder="Search a product (e.g. 'Amul Milk', 'Bread', 'Eggs')..." autocomplete="off" required>
+
+                <div class="location-divider"></div>
+
+                <i class="fa-solid fa-location-dot search-icon location-icon"></i>
+                <input type="text" id="locationInput" class="location-input" placeholder="Zip / City"
+                    autocomplete="off">
+
+                <button type="submit" class="btn-search">Search</button>
+            </form>
+
+            <div class="filters">
+                <span class="filter-label">Sort by:</span>
+                <select id="sortSelect" class="glass-dropdown">
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="availability">Availability First</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="results-container">
+            <!-- Loading Skeleton -->
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p>Scouring the web for the best price...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-msg hidden">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span id="errorText">Product not found.</span>
+            </div>
+
+            <!-- Results Grid -->
+            <div id="resultsGrid" class="results-grid">
+                <!-- Cards will be injected dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

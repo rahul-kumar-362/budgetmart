@@ -1,0 +1,29 @@
+# Environment variables
+.env
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Testing and profiling
+.pytest_cache/
+htmlcov/
+.coverage
+.tox/
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# Mac OS
+.DS_Store
+
+# Logs
+*.log
