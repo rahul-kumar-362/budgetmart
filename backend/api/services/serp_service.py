@@ -8,7 +8,7 @@ load_dotenv()
 
 API_KEY = os.getenv("SERPAPI_KEY", "")
 
-async def fetch_real_shopping_data(query: str, location: str = "India") -> list[dict]:
+def fetch_real_shopping_data(query: str, location: str = "India") -> list[dict]:
     """
     Fetches real-time pricing and availability from Google Shopping using SerpApi.
     Supports a location string (e.g. "Mumbai", "110001", "India").
@@ -22,15 +22,11 @@ async def fetch_real_shopping_data(query: str, location: str = "India") -> list[
       "location": location,
     }
     
-    # Run in a threadpool so it doesn't block the async loop
-    loop = asyncio.get_event_loop()
-    def _fetch():
-        search = GoogleSearch(params)
-        return search.get_dict()
-        
     try:
-        results = await loop.run_in_executor(None, _fetch)
+        search = GoogleSearch(params)
+        results = search.get_dict()
         shopping_results = results.get("shopping_results", [])
+
         
         parsed_data = []
         for item in shopping_results[:12]:  # Limit to top 12 results

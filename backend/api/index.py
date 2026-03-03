@@ -24,7 +24,7 @@ def health():
 # SEARCH API
 @app.route("/search")
 @cache.cached(query_string=True)
-async def search():
+def search():
     query = request.args.get("product", "").strip()
     location = request.args.get("location", "India").strip()
     
@@ -34,7 +34,7 @@ async def search():
     print(f"Fetching real-time Google Shopping data for: {query} in {location}")
     
     # Execute the unified SerpApi fetch
-    results = await fetch_real_shopping_data(query, location)
+    results = fetch_real_shopping_data(query, location)
             
     if not results:
         return jsonify({"error": "No matching product found or rate limit blocked"}), 404
