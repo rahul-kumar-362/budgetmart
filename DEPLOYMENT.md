@@ -14,7 +14,7 @@ I have already re-configured your files for Vercel. You just need to push them:
 ---
 
 ## Step 2: Deploy to Vercel
-1. Go to [Vercel.com](https://vercel.com/) and sign up/log in using your **GitHub account**.
+1. Go to [Vercel.com](https://v                                                                         ercel.com/) and sign up/log in using your **GitHub account**.
 2. Click the black **Add New...** button and select **Project**.
 3. You will see a list of your GitHub repositories. Find `budgetmart` and click **Import**.
 
@@ -27,7 +27,7 @@ On the project configuration page, make the following precise changes:
 3. **Environment Variables:** 
    - Expand this section.
    - **Name:** `SERPAPI_KEY`
-   - **Value:** `d3394e4498852dcb051ee267203bb20755b604a294cfcf888ea8471a9fdae44b`
+   - **Value:** `YOUR_SERPAPI_KEY_HERE` (Get a new one from your SerpApi dashboard!)
    - Click **Add**.
 4. Click the big **Deploy** button.
 
