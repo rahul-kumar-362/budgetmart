@@ -1,5 +1,15 @@
 # Environment variables
 .env
+.env.local
+backend/.env
+
+# Node / TypeScript
+node_modules/
+frontend/node_modules/
+
+# Local SQLite database (price history)
+*.db
+*.sqlite3
 
 # Virtual environments
 .venv/
@@ -30,3 +40,9 @@ htmlcov/
 
 # Temp local testing scripts
 tmp_*.py
+
+# Personal interview prep (keep local, not in public repo)
+INTERVIEW.txt
+Explanation.txt
+interview_prep.txt
+interviewprep2.txt

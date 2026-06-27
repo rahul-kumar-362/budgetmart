@@ -1,0 +1,15 @@
+{
+  "name": "budgetmart-frontend",
+  "version": "1.0.0",
+  "description": "BudgetMart frontend — vanilla TypeScript, no framework, compiled with tsc.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

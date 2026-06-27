@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BudgetMart | Real-time Grocery Aggregator</title>
+    <title>BudgetMart | Real-time Grocery Price Comparison</title>
+    <meta name="description"
+        content="Compare grocery prices across Indian platforms by true price-per-unit, not just sticker price.">
 
     <!-- Google Fonts: Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,33 +21,36 @@
 
 <body>
 
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
 
     <main class="container">
         <header class="header">
             <h1 class="logo">Budget<span>Mart</span></h1>
-            <p class="subtitle">Instantly compare grocery prices across top platforms.</p>
+            <p class="subtitle">Compare grocery prices by true value — not just the sticker price.</p>
         </header>
 
         <section class="search-section">
-            <form id="searchForm" class="search-box glass-panel">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <form id="searchForm" class="search-box glass-panel" role="search">
+                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                <label class="sr-only" for="searchInput">Product</label>
                 <input type="text" id="searchInput"
                     placeholder="Search a product (e.g. 'Amul Milk', 'Bread', 'Eggs')..." autocomplete="off" required>
 
-                <div class="location-divider"></div>
+                <div class="location-divider" aria-hidden="true"></div>
 
-                <i class="fa-solid fa-location-dot search-icon location-icon"></i>
+                <i class="fa-solid fa-location-dot search-icon location-icon" aria-hidden="true"></i>
+                <label class="sr-only" for="locationInput">Location</label>
                 <input type="text" id="locationInput" class="location-input" placeholder="Zip / City"
                     autocomplete="off">
 
-                <button type="submit" class="btn-search">Search</button>
+                <button type="submit" id="searchBtn" class="btn-search">Search</button>
             </form>
 
             <div class="filters">
-                <span class="filter-label">Sort by:</span>
+                <label class="filter-label" for="sortSelect">Sort by:</label>
                 <select id="sortSelect" class="glass-dropdown">
+                    <option value="value_asc">Best value (price / unit)</option>
                     <option value="price_asc">Price: Low to High</option>
                     <option value="availability">Availability First</option>
                 </select>
@@ -53,26 +58,36 @@
         </section>
 
         <section class="results-container">
-            <!-- Loading Skeleton -->
-            <div id="loader" class="loader hidden">
-                <div class="spinner"></div>
+            <!-- Demo-mode banner -->
+            <div id="demoBanner" class="demo-banner hidden" role="status"></div>
+
+            <!-- Results summary -->
+            <p id="resultsSummary" class="results-summary hidden" aria-live="polite"></p>
+
+            <!-- Loading -->
+            <div id="loader" class="loader hidden" role="status" aria-live="polite">
+                <div class="spinner" aria-hidden="true"></div>
                 <p>Scouring the web for the best price...</p>
             </div>
 
-            <!-- Error Message -->
-            <div id="errorMessage" class="error-msg hidden">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <span id="errorText">Product not found.</span>
+            <!-- Neutral empty state -->
+            <div id="emptyMessage" class="empty-msg hidden" role="status">
+                <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+                <span id="emptyText">No products found.</span>
             </div>
 
-            <!-- Results Grid -->
-            <div id="resultsGrid" class="results-grid">
-                <!-- Cards will be injected dynamically -->
+            <!-- Error state -->
+            <div id="errorMessage" class="error-msg hidden" role="alert">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                <span id="errorText">Something went wrong.</span>
             </div>
+
+            <!-- Results grid -->
+            <div id="resultsGrid" class="results-grid"></div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="dist/main.js" defer></script>
 </body>
 
 </html>
